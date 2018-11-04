@@ -90,6 +90,12 @@ public class MergeSortZadania {
         System.out.println(Arrays.toString(result4));
 
         System.out.println("*********************");
+        SortingAlgorithm sortingAlgorithm = new MergeSort();
+        System.out.println("Merge sort:");
+        Integer[] result5 = sortingAlgorithm.sort(arrayToSort1);
+        System.out.println(Arrays.toString(result5));
+        Integer[] result6 = sortingAlgorithm.sort(result);
+        System.out.println(Arrays.toString(result6));
 
 
     }
