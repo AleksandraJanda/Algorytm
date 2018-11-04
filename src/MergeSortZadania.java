@@ -51,7 +51,9 @@ public class MergeSortZadania {
     public static Integer[] zadanie4(Integer[] a1, Integer[] a2){
         SortingAlgorithm sortingAlgorithm = new SelectionSort();
         Integer[] r1 = sortingAlgorithm.sort(a1);
+        System.out.println(Arrays.toString(r1));
         Integer[] r2 = sortingAlgorithm.sort(a2);
+        System.out.println(Arrays.toString(r2));
         List<Integer[]> list = Arrays.asList(r1,r2);
         Integer[] array = zadanie3(list);
         return sortingAlgorithm.sort(array);
@@ -83,6 +85,7 @@ public class MergeSortZadania {
         System.out.println("Sorted arrays:");
         Integer[] result3 = zadanie4(arrayToSort1,arrayToSort2);
         System.out.println(Arrays.toString(result3));
+        System.out.println("*********************");
         Integer[] result4 = zadanie4(result,result2);
         System.out.println(Arrays.toString(result4));
 
