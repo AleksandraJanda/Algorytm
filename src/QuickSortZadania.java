@@ -144,6 +144,10 @@ public class QuickSortZadania {
         System.out.println("Sortowanie: "+zadanie5(array2).toString());
         System.out.println("Sortowanie: "+zadanie345(array2).toString());
         System.out.println("Sortowanie: "+ Arrays.toString(zadanie34567(array2)));
+        SortingAlgorithm sortingAlgorithm = new QuickSort();
+        Integer[] array3 = new Integer[]{2,9,8,5,4,7,6};
+
+        System.out.println("Sortowanie z algorytmem: "+ Arrays.toString(((QuickSort) sortingAlgorithm).quickSort(array3,0,array2.length-1)));
 
 
     }
