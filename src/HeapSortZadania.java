@@ -69,38 +69,73 @@ public class HeapSortZadania {
         zadanie1(array,k);
     }
     public static int[] buildHeap(int[] input){
-        for(int i = 0; i<input.length; i++){
+        for(int i = 1; i<input.length; i++){
             int currentNodeID = i;
             int parentID = getParentNumber(currentNodeID);
             int insertedValue = input[i];
             while(parentID>=0&&input[parentID]<insertedValue){
+                input[currentNodeID] = input[parentID];
                 currentNodeID = parentID;
                 parentID = getParentNumber(currentNodeID);
             }
             input[currentNodeID] = insertedValue;
+            System.out.println(Arrays.toString(input));
         }
         return input;
     }
-    public static void heapZadanie3(int[] array, int k){
-        while(!isLeaf(array, k)){
-            //int id = k;
-            System.out.println(getLeftSonNumber(k));
-            System.out.println(getRightSonNumber(k));
-            k = 2*k+1;
+    public static int[] shiftHeap(int[] input){
+        for(int i = input.length-1; i>=1; i--){
+            int tmp = input[0];
+            input[0] = input[i];
+            input[i]=tmp;
+            int parentID = 0;
+            int leftChildID = 1;
+            while(leftChildID<i){
+                int greaterChildID = leftChildID;
+                int rightChildID = leftChildID+1;
+                if (rightChildID < i && input[rightChildID] > input[leftChildID]){
+                    greaterChildID = rightChildID;
+                }
+                if(input[greaterChildID]<=input[parentID]){
+                    break;
+                }
+                tmp = input[parentID];
+                input[parentID] = input[greaterChildID];
+                input[greaterChildID] = tmp;
+                parentID = greaterChildID;
+                leftChildID = getLeftSonNumber(parentID);
+            }
         }
+        return input;
     }
+    public static int[] buildAndShift(int[] input){
+        
+        return input;
+    }
+
+    public static void wLeft(int[] array, int k){
+        System.out.println(array[getLeftSonNumber(k)]);
+    }
+    public static void wRight(int[] array, int k){
+        System.out.println(array[getRightSonNumber(k)]);
+    }
+    public static void heapZadanie3(int[] array, int k){
+
+    }
+
     public static void main(String[] args) {
         int[] array = new int[]{8,7,6,6,4,6,5,2,1,4,3,6,2,4};
-        int[] array2 = new int[]{5,6,4,2,1,9,7};
-
-        int k = 3;
+        int[] array2 = new int[]{5,9,12,4,13,81,65}; //81,12,65,4,5,9,13
+        int k = 1;
         //zadanie1(array,k);
         //zadanie2(array,k);
         //zadanie3(array,k,Child.LEFT);
-        int[] heap = buildHeap(array);
-        System.out.println("BuildHeap: "+ Arrays.toString(heap));
+        //System.out.println("BuildHeap: "+ Arrays.toString(heap));
         //zadanie1(heap,3);
-        //System.out.println("BuildHeap: "+ Arrays.toString(buildHeap(array2)));
-
+        //System.out.println("To build:\t"+ Arrays.toString(array2));
+        //System.out.println("BuildHeap:\t"+ Arrays.toString(buildHeap(array2)));
+        //heapZadanie3(array,k);
+        System.out.println("ShiftHeap:\t"+ Arrays.toString(shiftHeap(array)));
+        //System.out.println("ShiftHeap:\t"+ Arrays.toString(shiftHeap(buildHeap(array2))));
     }
 }
